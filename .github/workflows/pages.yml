@@ -37,20 +37,31 @@ jobs:
             --exclude '_site' \
             ./ _site/
 
-          # Reconstruct the exact uploaded resume during CI. The generated
-          # site contains a normal binary PDF; visitors never decode base64.
-          cat assets/resume/part-*.b64.txt | tr -d '\n\r ' | base64 --decode > _site/assets/Arshaan-Khan-GTM-Resume.pdf
-          test "$(wc -c < _site/assets/Arshaan-Khan-GTM-Resume.pdf)" -eq 95357
-          echo "fffd5a632203a19aef23e1c4877c759931f1b2267f792c52165a6c201ebfbd8b  _site/assets/Arshaan-Khan-GTM-Resume.pdf" | sha256sum -c -
+          # Reconstruct the exact uploaded resume into a normal binary PDF.
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64, hashlib
 
-          # GitHub project pages live below /arshaan-gtm-portfolio/, so keep
-          # local site resources project-relative rather than domain-root-relative.
+          parts = sorted(Path('assets/resume').glob('part-*.b64.txt'))
+          assert len(parts) == 7, f'Expected 7 resume parts, found {len(parts)}'
+          payload = ''.join(p.read_text(encoding='utf-8') for p in parts)
+          payload = ''.join(payload.split())
+          pdf = base64.b64decode(payload, validate=True)
+          assert len(pdf) == 95357, f'Unexpected PDF size: {len(pdf)}'
+          digest = hashlib.sha256(pdf).hexdigest()
+          assert digest == 'fffd5a632203a19aef23e1c4877c759931f1b2267f792c52165a6c201ebfbd8b', digest
+          out = Path('_site/assets/Arshaan-Khan-GTM-Resume.pdf')
+          out.write_bytes(pdf)
+          print(f'Resume verified: {len(pdf)} bytes, sha256={digest}')
+          PY
+
+          # Project Pages lives below /arshaan-gtm-portfolio/, so local
+          # resources must be relative rather than domain-root-relative.
           sed -i "s#'/evidence/systemize.b64.txt#'evidence/systemize.b64.txt#g" _site/final.js
           sed -i 's/Résumé/Resume/g' _site/index.html
           sed -i 's#</body>#<script src="pages-runtime.js?v=1"></script>\n</body>#' _site/index.html
 
-          # Do not publish the source chunks or the previous browser-side
-          # resume payload now that the verified PDF exists in the artifact.
+          # Publish the verified PDF, not the source chunks / legacy payload.
           rm -rf _site/assets/resume
           rm -f _site/assets/arshaan-khan-resume.b64.txt
           touch _site/.nojekyll
