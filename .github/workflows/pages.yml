@@ -1,0 +1,72 @@
+name: Deploy portfolio to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build static site
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site
+
+          rsync -a \
+            --exclude '.git' \
+            --exclude '.github' \
+            --exclude '_site' \
+            ./ _site/
+
+          # Reconstruct the exact uploaded resume during CI. The generated
+          # site contains a normal binary PDF; visitors never decode base64.
+          cat assets/resume/part-*.b64.txt | tr -d '\n\r ' | base64 --decode > _site/assets/Arshaan-Khan-GTM-Resume.pdf
+          test "$(wc -c < _site/assets/Arshaan-Khan-GTM-Resume.pdf)" -eq 95357
+          echo "fffd5a632203a19aef23e1c4877c759931f1b2267f792c52165a6c201ebfbd8b  _site/assets/Arshaan-Khan-GTM-Resume.pdf" | sha256sum -c -
+
+          # GitHub project pages live below /arshaan-gtm-portfolio/, so keep
+          # local site resources project-relative rather than domain-root-relative.
+          sed -i "s#'/evidence/systemize.b64.txt#'evidence/systemize.b64.txt#g" _site/final.js
+          sed -i 's/Résumé/Resume/g' _site/index.html
+          sed -i 's#</body>#<script src="pages-runtime.js?v=1"></script>\n</body>#' _site/index.html
+
+          # Do not publish the source chunks or the previous browser-side
+          # resume payload now that the verified PDF exists in the artifact.
+          rm -rf _site/assets/resume
+          rm -f _site/assets/arshaan-khan-resume.b64.txt
+          touch _site/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
