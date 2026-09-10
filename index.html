@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b2d42'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23edf2f4'%3EAK%3C/text%3E%3C/svg%3E">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('ak-theme')==='dark'?'dark':'light'}catch(e){}</script>
-<link rel="stylesheet" href="final.css?v=4">
+<link rel="stylesheet" href="final.css?v=5">
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
@@ -71,33 +71,50 @@
         <div class="belief-inner">
           <p class="eyebrow">Operating belief</p>
           <div class="belief-lines" data-belief-lines>
-            <div class="belief-line belief-1">The best outbound systems</div>
-            <div class="belief-line belief-2">do not automate judgment away.</div>
-            <div class="belief-line belief-3">They <span class="belief-accent">concentrate</span> judgment</div>
-            <div class="belief-line belief-4">where it changes the outcome.</div>
+            <div class="belief-group belief-group-a">
+              <div class="belief-line belief-1" data-belief-write>The best outbound systems</div>
+              <div class="belief-line belief-2" data-belief-write>do not automate judgment away.</div>
+            </div>
+            <div class="belief-group belief-group-b">
+              <div class="belief-line belief-3" data-belief-write>They <span class="belief-accent">concentrate</span> judgment</div>
+              <div class="belief-line belief-4" data-belief-write>where it changes the outcome.</div>
+            </div>
           </div>
         </div>
       </section>
+
       <section class="work-screen" id="selected-work">
         <div class="work-heading"><p class="eyebrow">Selected work</p><h2 data-write>Operating, building, testing.</h2></div>
         <div class="work-pair">
           <article class="project project-jobready">
             <div class="project-meta"><span>Operating experience</span><span>01</span></div>
             <h3 data-write>JobReady.co</h3>
-            <p>Operating outbound across sourcing, signals, enrichment, sequencing, follow-up, and handoff.</p>
+            <p>Signal-led outbound across LinkedIn and email, built around tighter targeting rather than maximum send volume.</p>
             <div class="project-actions"><a class="btn cyan" href="https://salesforce.jobready.co/" target="_blank" rel="noopener">Company ↗</a><a class="btn red" href="#proof">Lead journey ↑</a></div>
-            <div class="project-visual"><div class="mini-flow"><span>Signal</span><i></i><span>Account</span><i></i><span>Person</span><i></i><span>Conversation</span></div></div>
+            <div class="jobready-proof" aria-label="JobReady outbound results">
+              <div class="jr-volume"><strong>1,200+</strong><span>outbound touches</span><small>across 3 weeks</small></div>
+              <div class="jr-funnel" aria-label="Normalized funnel per 100 unique prospects">
+                <div><strong>100</strong><span>prospects</span></div><i>→</i>
+                <div><strong>~15</strong><span>replies</span></div><i>→</i>
+                <div><strong>~4–5</strong><span>SQLs</span></div><i>→</i>
+                <div><strong>~3</strong><span>held meetings</span></div>
+              </div>
+              <p class="jr-note">Conversion view normalized to 100 unique prospects. Touch volume is activity, not the denominator.</p>
+              <div class="jr-path"><span>Prospecting</span><span>Signal research</span><span>Enrichment</span><span>Sequencing</span><span>Qualification</span></div>
+            </div>
           </article>
+
           <article class="project project-eubrics featured">
             <div class="project-meta"><span>Featured case study</span><span>02</span></div>
             <h3 data-write>Eubrics · US Insurance</h3>
             <p>End-to-end outbound prototype: qualification → research → sequencing → channel logic → reporting.</p>
             <div class="project-actions"><a class="btn cyan" href="https://www.loom.com/share/2e48179fca4c4bb3aa1f258da73fb7bf" target="_blank" rel="noopener">Watch demo ↗</a><a class="btn red" href="https://app.lemlist.com/share/sequence/cam_jrw6G3qGyB27bQKWf/seq_TAECFzemKZpqaBZZt" target="_blank" rel="noopener">Lemlist ↗</a></div>
-            <div class="project-visual"><img data-eubrics-image alt="Sanitized Eubrics outbound workflow"></div>
+            <div class="project-visual"><img data-eubrics-image alt="Eubrics outbound workflow evidence"></div>
             <div class="tiny-links"><a href="https://app.clay.com/shared-table/share_0tkp9hrentcGe92pjSX" target="_blank" rel="noopener">Clay companies ↗</a><a href="https://app.clay.com/shared-table/share_0tkp9egwzGGMP8sr5Mw" target="_blank" rel="noopener">Clay personas ↗</a></div>
           </article>
         </div>
       </section>
+
       <section class="work-screen">
         <div class="work-heading"><p class="eyebrow">Selected work</p><h2>Operating, building, testing.</h2></div>
         <div class="work-pair">
@@ -127,9 +144,18 @@
     <p class="eyebrow stack-label">Operating stack</p>
     <h2 class="stack-thesis" data-write><span class="tools-phrase">Tools are replaceable.</span> <span class="jobs-phrase">Jobs are not.</span></h2>
     <div class="tools">
-      <article class="tool"><span class="tool-index">01</span><h3>Research & data</h3><p>Find the signal. Verify the context.</p><ul><li>Sales Navigator</li><li>Apollo</li><li>Clay</li></ul></article>
-      <article class="tool"><span class="tool-index">02</span><h3>Reasoning & systems</h3><p>Encode the decision. Keep it inspectable.</p><ul><li>LLMs</li><li>Custom logic</li><li>n8n</li><li>Make</li><li>Supabase</li></ul></article>
-      <article class="tool"><span class="tool-index">03</span><h3>Activation</h3><p>Put the decision into motion.</p><ul><li>Lemlist</li><li>Instantly</li><li>LinkedIn</li></ul></article>
+      <article class="tool">
+        <span class="tool-index">01</span><h3>Research & data</h3><p>Find the signal. Verify the context.</p>
+        <ul><li><span class="tool-mark">in</span><span>Sales Navigator</span></li><li><span class="tool-mark">A</span><span>Apollo</span></li><li><span class="tool-mark">C</span><span>Clay</span></li></ul>
+      </article>
+      <article class="tool">
+        <span class="tool-index">02</span><h3>Reasoning & systems</h3><p>Encode the decision. Keep it inspectable.</p>
+        <ul><li><span class="tool-mark">✦</span><span>LLMs</span></li><li><span class="tool-mark code-mark">{ }</span><span>Custom logic</span></li><li><span class="tool-mark wide-mark">n8n</span><span>n8n</span></li><li><span class="tool-mark">M</span><span>Make</span></li><li><span class="tool-mark">S</span><span>Supabase</span></li></ul>
+      </article>
+      <article class="tool">
+        <span class="tool-index">03</span><h3>Activation</h3><p>Put the decision into motion.</p>
+        <ul><li><span class="tool-mark">L</span><span>Lemlist</span></li><li><span class="tool-mark">I</span><span>Instantly</span></li><li><span class="tool-mark">in</span><span>LinkedIn</span></li></ul>
+      </article>
     </div>
   </div>
 </section>
@@ -145,8 +171,21 @@
           <p class="about-meta" data-write>Qualification · Research · Routing · Personalization · Execution · Feedback</p>
         </div>
       </section>
+
       <section class="final-panel" id="contact">
-        <div class="final-inner"><p class="eyebrow">Open to GTM roles</p><h2>If the motion is <span class="redword">messy</span>, that is usually where I want to <span class="cyanword">look.</span></h2><p>GTM Engineering · Revenue Systems · AI-native outbound</p><div class="final-actions"><a class="btn cyan" href="#work" data-work-jump>View selected work ↗</a><a class="btn red" href="#top" data-top>Back to top ↑</a></div></div>
+        <div class="final-card" data-final-card>
+          <div class="final-inner">
+            <p class="eyebrow">Open to GTM roles</p>
+            <h2 data-write>If the motion is <span class="redword">messy</span>, that is usually where I want to <span class="cyanword">look.</span></h2>
+            <p class="final-sub">GTM Engineering · Revenue Systems · AI-native outbound</p>
+            <div class="final-actions">
+              <a class="btn cyan contact-primary" href="mailto:arsh44n.me@gmail.com">Email me ↗</a>
+              <a class="btn red" href="https://www.linkedin.com/in/arsh44n" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a class="btn contact-ghost" href="https://wa.me/918837866368" target="_blank" rel="noopener">WhatsApp ↗</a>
+            </div>
+            <div class="contact-meta"><a href="mailto:arsh44n.me@gmail.com">arsh44n.me@gmail.com</a><span>·</span><a href="tel:+918837866368">+91 88378 66368</a><span>·</span><a href="#work" data-work-jump>Selected work ↑</a></div>
+          </div>
+        </div>
         <footer class="footer"><span>Arshaan Khan · GTM Engineer</span><span>Signals → Systems → Conversations</span></footer>
       </section>
     </div>
@@ -154,6 +193,6 @@
 </section>
 </main>
 <div class="proof-modal" data-proof-modal aria-hidden="true"><button class="proof-close" type="button" data-proof-close aria-label="Close proof">×</button><img data-proof-modal-image alt="Expanded evidence screenshot"><div class="proof-modal-caption" data-proof-modal-caption></div></div>
-<script src="final.js?v=4"></script>
+<script src="final.js?v=5"></script>
 </body>
 </html>
