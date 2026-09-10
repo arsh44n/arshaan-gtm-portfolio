@@ -16,7 +16,7 @@ theme?.addEventListener('click',()=>{
   paintTheme();
 });
 
-/* Type-on statements: automatic on section arrival, never scroll-scrubbed. */
+/* Automatic word reveal for regular statements. Operating Belief is handled separately below. */
 function wrapWrite(el){
   if(!el||el.dataset.wrapped)return;
   let i=0;
@@ -55,7 +55,7 @@ if(reduced){
   writeTargets.forEach(el=>writeObs.observe(el));
 }
 
-/* Hero interpreter word, fixed width so it never reflows the headline. */
+/* Hero interpreter word */
 const typed=q('[data-typed]');
 if(typed&&!reduced){
   const words=['signal','reason','trigger'];let wi=0,ci=0,del=false;
@@ -72,13 +72,13 @@ if(typed&&!reduced){
   typed.textContent='';tick();
 }
 
-/* Evidence. High-resolution originals can replace these sources without changing layout. */
+/* Evidence */
 const OLD='https://raw.githubusercontent.com/arsh44n/arshaan_portfolio/main/gtm-portfolio/evidence/';
 const NEW='https://raw.githubusercontent.com/arsh44n/arshaan-gtm-portfolio/main/evidence/';
 const evidenceSources={
   detect:[OLD+'detect.b64.txt'],
   research:[OLD+'research.b64.txt'],
-  systemize:[NEW+'systemize.b64.txt','/evidence/systemize.b64.txt?v=5',OLD+'systemize.b64.txt'],
+  systemize:[NEW+'systemize.b64.txt','/evidence/systemize.b64.txt?v=6',OLD+'systemize.b64.txt'],
   activate:[OLD+'activate.b64.txt'],
   learn:[OLD+'learn.b64.txt']
 };
@@ -162,12 +162,15 @@ function openProof(){
   modal.classList.add('is-open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
 }
 function closeProof(){if(!modal)return;modal.classList.remove('is-open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''}
-proof?.addEventListener('click',openProof);q('[data-proof-close]')?.addEventListener('click',closeProof);modal?.addEventListener('click',e=>{if(e.target===modal)closeProof()});addEventListener('keydown',e=>{if(e.key==='Escape')closeProof()});
+proof?.addEventListener('click',openProof);
+q('[data-proof-close]')?.addEventListener('click',closeProof);
+modal?.addEventListener('click',e=>{if(e.target===modal)closeProof()});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeProof()});
 
-/* Operating belief: weighted layout + deliberate word-by-word write-on. */
-const beliefLines=q('[data-belief-lines]');
-let beliefIndex=0;
+/* Operating Belief — genuinely scroll-scrubbed, not timer/IntersectionObserver based. */
+const beliefLines=q('[data-belief-lines]'),beliefPanel=q('.belief-panel'),bShell=q('[data-belief-shell]'),bTrack=q('[data-belief-track]');
 function wrapBelief(el){
+  if(!el||el.dataset.beliefWrapped)return;
   const walk=node=>{
     [...node.childNodes].forEach(ch=>{
       if(ch.nodeType===3&&ch.textContent.trim()){
@@ -175,7 +178,13 @@ function wrapBelief(el){
         ch.textContent.split(/(\s+)/).forEach(t=>{
           if(/^\s+$/.test(t)){f.append(t)}
           else if(t){
-            const s=document.createElement('span');s.className='belief-word';s.style.setProperty('--belief-i',beliefIndex++);s.textContent=t;f.append(s);
+            const s=document.createElement('span');
+            s.className='belief-word';
+            s.textContent=t;
+            s.style.display='inline-block';
+            s.style.willChange='opacity,transform';
+            s.style.transition='none';
+            f.append(s);
           }
         });
         ch.replaceWith(f);
@@ -183,24 +192,46 @@ function wrapBelief(el){
     });
   };
   walk(el);
+  el.dataset.beliefWrapped='1';
+  el.style.opacity='1';
+  el.style.transform='none';
+  el.style.transition='none';
 }
 qa('[data-belief-write]').forEach(wrapBelief);
-if(reduced){beliefLines?.classList.add('is-on')}
-else if(beliefLines){
-  const obs=new IntersectionObserver(es=>es.forEach(e=>{
-    if(e.isIntersecting&&e.intersectionRatio>.32){beliefLines.classList.add('is-on');obs.disconnect()}
-  }),{threshold:[.18,.32,.48]});
-  obs.observe(beliefLines);
+const beliefWords=beliefLines?qa('.belief-word',beliefLines):[];
+
+function beliefProgress(){
+  if(!bShell||!beliefPanel)return 1;
+  if(innerWidth>1050){
+    const r=bShell.getBoundingClientRect(),max=Math.max(1,bShell.offsetHeight-innerHeight),raw=clamp(-r.top/max);
+    return clamp((raw-.018)/.245);
+  }
+  const r=beliefPanel.getBoundingClientRect();
+  return clamp((innerHeight*.78-r.top)/(innerHeight*.72));
 }
-const bShell=q('[data-belief-shell]'),bTrack=q('[data-belief-track]');
+function updateBeliefWords(){
+  if(!beliefWords.length)return;
+  if(reduced){
+    beliefWords.forEach(w=>{w.style.opacity='1';w.style.transform='none'});
+    return;
+  }
+  const p=beliefProgress();
+  const cursor=p*(beliefWords.length+1.15);
+  beliefWords.forEach((w,i)=>{
+    const local=clamp((cursor-i)/1.1);
+    w.style.opacity=String(local);
+    w.style.transform=`translate3d(0,${(1-local)*.34}em,0)`;
+  });
+}
 function updateBeliefTrack(){
   if(!bShell||!bTrack)return;
   if(innerWidth<=1050){bTrack.style.transform='none';return}
-  const r=bShell.getBoundingClientRect(),max=bShell.offsetHeight-innerHeight,raw=max?clamp(-r.top/max):0,move=clamp((raw-.26)/.70);
+  const r=bShell.getBoundingClientRect(),max=Math.max(1,bShell.offsetHeight-innerHeight),raw=clamp(-r.top/max);
+  const move=clamp((raw-.31)/.69);
   bTrack.style.transform=`translate3d(${-move*200/3}%,0,0)`;
 }
 
-/* About stays readable first; final CTA then enters from the right. */
+/* About / final CTA */
 const closeShell=q('[data-closing-shell]'),closeTrack=q('[data-closing-track]'),finalCard=q('[data-final-card]');
 function updateClose(){
   if(!closeShell||!closeTrack)return;
@@ -214,11 +245,61 @@ function updateClose(){
   }
 }
 
+/* Contact: copy first, then invoke the visitor's mail client. */
+const EMAIL='arsh44n.me@gmail.com';
+async function copyText(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    return true;
+  }catch(e){
+    try{
+      const ta=document.createElement('textarea');
+      ta.value=text;ta.setAttribute('readonly','');ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);ta.select();const ok=document.execCommand('copy');ta.remove();return ok;
+    }catch(_){return false}
+  }
+}
+qa('[data-email-me]').forEach(a=>a.addEventListener('click',async e=>{
+  e.preventDefault();
+  await copyText(EMAIL);
+  window.location.href=a.getAttribute('href')||`mailto:${EMAIL}`;
+}));
+qa('[data-copy-email]').forEach(btn=>btn.addEventListener('click',async()=>{
+  const original=btn.textContent;
+  const ok=await copyText(EMAIL);
+  btn.textContent=ok?'Email copied ✓':EMAIL;
+  setTimeout(()=>{btn.textContent=original},1500);
+}));
+
+/* Résumé download. The current temporary PDF can be replaced later without changing the UI. */
+async function downloadResume(trigger){
+  const original=trigger?.textContent;
+  try{
+    if(trigger){trigger.disabled=true;trigger.textContent='Preparing résumé…'}
+    const res=await fetch('/assets/arshaan-khan-resume.b64.txt?v=1',{cache:'no-store'});
+    if(!res.ok)throw new Error(`resume ${res.status}`);
+    const b64=(await res.text()).replace(/\s+/g,'');
+    const raw=atob(b64),bytes=new Uint8Array(raw.length);
+    for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+    const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
+    const a=document.createElement('a');
+    a.href=url;a.download='Arshaan-Khan-GTM-Resume.pdf';
+    document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1800);
+  }catch(err){
+    console.warn('Résumé download failed',err);
+    window.open('/assets/arshaan-khan-resume.b64.txt','_blank','noopener');
+  }finally{
+    if(trigger){trigger.disabled=false;trigger.textContent=original}
+  }
+}
+qa('[data-resume-download]').forEach(el=>el.addEventListener('click',e=>{e.preventDefault();downloadResume(el)}));
+
 /* Navigation */
 qa('[data-work-jump]').forEach(a=>a.addEventListener('click',e=>{
   if(innerWidth<=1050)return;
   e.preventDefault();
-  const y=bShell.getBoundingClientRect().top+scrollY+(bShell.offsetHeight-innerHeight)*.52;
+  const y=bShell.getBoundingClientRect().top+scrollY+(bShell.offsetHeight-innerHeight)*.56;
   scrollTo({top:y,behavior:reduced?'auto':'smooth'});
 }));
 qa('[data-talk],[data-talk-secondary]').forEach(a=>a.addEventListener('click',e=>{
@@ -227,11 +308,20 @@ qa('[data-talk],[data-talk-secondary]').forEach(a=>a.addEventListener('click',e=
   const y=closeShell.getBoundingClientRect().top+scrollY+(closeShell.offsetHeight-innerHeight)*.98;
   scrollTo({top:y,behavior:reduced?'auto':'smooth'});
 }));
-q('[data-strategy]')?.addEventListener('click',()=>q('[data-strategy-note]')?.classList.toggle('open'));
+q('[data-strategy]')?.addEventListener('click',()=>{
+  const note=q('[data-strategy-note]');
+  note?.classList.toggle('open');
+});
 
 let ticking=false;
-function update(){updateJourney();updateBeliefTrack();updateClose();ticking=false}
+function update(){
+  updateJourney();
+  updateBeliefWords();
+  updateBeliefTrack();
+  updateClose();
+  ticking=false;
+}
 addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(update);ticking=true}},{passive:true});
-addEventListener('resize',update,{passive:true});
+addEventListener('resize',()=>{update()},{passive:true});
 update();
 })();
