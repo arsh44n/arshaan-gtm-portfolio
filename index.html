@@ -14,53 +14,146 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b2d42'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23edf2f4'%3EAK%3C/text%3E%3C/svg%3E">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('ak-theme')==='dark'?'dark':'light'}catch(e){}</script>
-<script src="preload.js?v=2"></script>
-<link rel="stylesheet" href="final.css?v=final2">
-<link rel="stylesheet" href="polish.css?v=2">
+<link rel="stylesheet" href="final.css?v=4">
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <header class="nav" id="top">
   <a class="brand" href="#top">AK</a>
   <nav aria-label="Primary"><a href="#proof">Flow</a><a href="#work" data-work-jump>Work</a><a href="#system">System</a><a href="#about">About</a></nav>
-  <div class="nav-actions"><button class="theme" type="button" data-theme aria-label="Toggle color theme"><span data-light>Light</span><span data-dark>Dark</span></button><a class="cta" href="#contact" data-talk>Talk GTM</a></div>
+  <div class="nav-actions">
+    <button class="theme" type="button" data-theme aria-label="Toggle color theme"><span data-light>Light</span><span data-dark>Dark</span></button>
+    <a class="cta" href="#contact" data-talk>Talk GTM</a>
+  </div>
 </header>
 <main>
 <section class="hero">
+  <div class="hero-orb" aria-hidden="true"></div>
   <div class="hero-inner">
     <p class="eyebrow">GTM Engineer · Signals → Systems → Conversations</p>
-    <h1><span class="hero-line">Outbound shouldn’t start with a list.</span><span class="hero-line">It should start with a <span class="typed-slot"><span data-typed>signal</span><i class="caret"></i></span>.</span></h1>
-    <p class="hero-sub" data-auto-words>I design GTM systems that detect intent, add context, make a decision, and turn that decision into a relevant conversation.</p>
+    <h1><span class="hero-line">Outbound shouldn’t start with a list.</span><span class="hero-line accent-line">It should start with a <span class="typed-slot"><span data-typed>signal</span><i class="caret"></i></span>.</span></h1>
+    <p class="hero-sub" data-write>I design GTM systems that detect intent, add context, make a decision, and turn that decision into a relevant conversation.</p>
     <div class="hero-actions"><a class="primary" href="#proof">Follow the lead journey</a><a class="secondary" href="#work" data-work-jump>Selected work ↘</a></div>
   </div>
 </section>
+
 <section class="journey-shell" id="proof">
   <div class="journey-sticky">
-    <div class="section-top"><p class="eyebrow">A real lead journey</p><h2 data-auto-words>One reason. Five decisions.</h2></div>
-    <div class="stagebar" aria-hidden="true"><div class="stage-line"></div><div class="stage-progress" data-stage-progress></div><div class="stage-dot" data-stage-dot></div><div class="stage-labels"><div class="stage-label active" data-label><span>01</span><strong>Detect</strong></div><div class="stage-label" data-label><span>02</span><strong>Research</strong></div><div class="stage-label" data-label><span>03</span><strong>Systemize</strong></div><div class="stage-label" data-label><span>04</span><strong>Activate</strong></div><div class="stage-label" data-label><span>05</span><strong>Learn</strong></div></div></div>
-    <article class="journey-card" data-journey-card><div class="journey-meta"><span data-j-stage>Detect</span><span data-j-num>01</span></div><h3 data-j-title>Start with movement.</h3><p class="journey-caption" data-j-caption>A real signal creates the reason to look closer.</p><div class="proof-wrap"><img data-j-image alt="Signal, ICP fit and pre-warm evidence"></div><p class="proof-note" data-j-note>Historical hiring signal reconstructed; original listing not retained.</p></article>
+    <div class="section-top"><p class="eyebrow">A real lead journey</p><h2 data-write>One reason. Five decisions.</h2></div>
+    <div class="stagebar" aria-hidden="true">
+      <div class="stage-line"></div><div class="stage-progress" data-stage-progress></div><div class="stage-dot" data-stage-dot></div>
+      <div class="stage-labels">
+        <div class="stage-label active" data-label><span>01</span><strong>Detect</strong></div>
+        <div class="stage-label" data-label><span>02</span><strong>Research</strong></div>
+        <div class="stage-label" data-label><span>03</span><strong>Systemize</strong></div>
+        <div class="stage-label" data-label><span>04</span><strong>Activate</strong></div>
+        <div class="stage-label" data-label><span>05</span><strong>Learn</strong></div>
+      </div>
+    </div>
+    <article class="journey-card" data-journey-card>
+      <div class="journey-meta"><span data-j-stage>Detect</span><span data-j-num>01</span></div>
+      <div class="journey-copy"><h3 data-j-title>Start with movement.</h3><p class="journey-caption" data-j-caption>A real signal creates the reason to look closer.</p></div>
+      <button class="proof-wrap is-loading" type="button" data-proof-open aria-label="Open evidence full screen">
+        <img data-j-image alt="Signal, ICP fit and pre-warm evidence">
+        <span class="proof-fallback" data-proof-fallback>Loading evidence…</span>
+        <span class="proof-zoom">Inspect proof ↗</span>
+      </button>
+      <p class="proof-note" data-j-note>Historical hiring signal reconstructed; original listing not retained.</p>
+    </article>
     <div class="journey-foot"><span data-stage-counter>Stage 01 / 05</span><span>Signal → decision → proof.</span></div>
   </div>
 </section>
+
 <section class="belief-work-shell" id="work" data-belief-shell>
   <div class="belief-work-sticky">
     <div class="belief-track" data-belief-track>
-      <section class="belief-panel"><div class="belief-inner"><p class="eyebrow">Operating belief</p><p class="belief-copy" data-belief-copy>The best outbound systems do not automate judgment away. They concentrate judgment where it changes the outcome.</p></div></section>
-      <section class="work-screen" id="selected-work"><div class="work-heading"><div><p class="eyebrow">Selected work</p><h2 data-auto-words>Operating, building, testing.</h2></div></div><div class="work-pair">
-        <article class="project"><div class="project-meta"><span>Operating experience</span><span>01</span></div><h3 data-auto-words>JobReady.co</h3><p>Operating outbound across sourcing, signals, enrichment, sequencing, follow-up, and handoff.</p><div class="project-actions"><a class="btn cyan" href="https://salesforce.jobready.co/" target="_blank" rel="noopener">Company ↗</a><a class="btn red" href="#proof">Lead journey ↑</a></div><div class="project-visual"><div class="mini-flow"><span>Signal</span><i></i><span>Account</span><i></i><span>Person</span><i></i><span>Conversation</span></div></div></article>
-        <article class="project featured"><div class="project-meta"><span>Featured case study</span><span>02</span></div><h3 data-auto-words>Eubrics · US Insurance</h3><p>End-to-end outbound prototype: qualification → research → sequencing → channel logic → reporting.</p><div class="project-actions"><a class="btn cyan" href="https://www.loom.com/share/2e48179fca4c4bb3aa1f258da73fb7bf" target="_blank" rel="noopener">Watch demo ↗</a><a class="btn red" href="https://app.lemlist.com/share/sequence/cam_jrw6G3qGyB27bQKWf/seq_TAECFzemKZpqaBZZt" target="_blank" rel="noopener">Lemlist ↗</a></div><div class="project-visual"><img data-eubrics-image alt="Sanitized Eubrics outbound workflow"></div><div class="tiny-links"><a href="https://app.clay.com/shared-table/share_0tkp9hrentcGe92pjSX" target="_blank" rel="noopener">Clay companies ↗</a><a href="https://app.clay.com/shared-table/share_0tkp9egwzGGMP8sr5Mw" target="_blank" rel="noopener">Clay personas ↗</a></div></article>
-      </div></section>
-      <section class="work-screen"><div class="work-heading"><div><p class="eyebrow">Selected work</p><h2>Operating, building, testing.</h2></div></div><div class="work-pair">
-        <article class="project"><div class="project-meta"><span>Active V1 build</span><span>03</span></div><h3 data-auto-words>LeadOS</h3><p>A table-first GTM operating layer for qualification, reasoning, review, and execution state.</p><div class="project-actions"><a class="btn cyan" href="https://github.com/arsh44n/LeadOS" target="_blank" rel="noopener">GitHub ↗</a><a class="btn red" href="#system">System ↓</a></div><div class="project-visual"><div class="leados-ui"><i></i><div class="leados-main"><span></span><span></span><span></span></div></div></div></article>
-        <article class="project"><div class="project-meta"><span>Strategy assignment</span><span>04</span></div><h3 data-auto-words>TechieButler × Ramp</h3><p>Account-specific outbound strategy built around buying context, problem framing, and a reason to reach out.</p><div class="project-actions"><button class="btn cyan" type="button" data-strategy>View strategy</button><a class="btn red" href="#contact" data-talk-secondary>Talk GTM ↗</a></div><div class="strategy-note" data-strategy-note>Target: Ramp · Buyer: EVP Engineering · Thesis: lead with engineering-capacity pressure and a reasoned, account-specific message.</div><div class="project-visual"><div class="tb-lines"><i></i><i></i><i></i><i></i></div></div></article>
-      </div></section>
+      <section class="belief-panel">
+        <div class="belief-inner">
+          <p class="eyebrow">Operating belief</p>
+          <div class="belief-lines" data-belief-lines>
+            <div class="belief-line belief-1">The best outbound systems</div>
+            <div class="belief-line belief-2">do not automate judgment away.</div>
+            <div class="belief-line belief-3">They <span class="belief-accent">concentrate</span> judgment</div>
+            <div class="belief-line belief-4">where it changes the outcome.</div>
+          </div>
+        </div>
+      </section>
+      <section class="work-screen" id="selected-work">
+        <div class="work-heading"><p class="eyebrow">Selected work</p><h2 data-write>Operating, building, testing.</h2></div>
+        <div class="work-pair">
+          <article class="project project-jobready">
+            <div class="project-meta"><span>Operating experience</span><span>01</span></div>
+            <h3 data-write>JobReady.co</h3>
+            <p>Operating outbound across sourcing, signals, enrichment, sequencing, follow-up, and handoff.</p>
+            <div class="project-actions"><a class="btn cyan" href="https://salesforce.jobready.co/" target="_blank" rel="noopener">Company ↗</a><a class="btn red" href="#proof">Lead journey ↑</a></div>
+            <div class="project-visual"><div class="mini-flow"><span>Signal</span><i></i><span>Account</span><i></i><span>Person</span><i></i><span>Conversation</span></div></div>
+          </article>
+          <article class="project project-eubrics featured">
+            <div class="project-meta"><span>Featured case study</span><span>02</span></div>
+            <h3 data-write>Eubrics · US Insurance</h3>
+            <p>End-to-end outbound prototype: qualification → research → sequencing → channel logic → reporting.</p>
+            <div class="project-actions"><a class="btn cyan" href="https://www.loom.com/share/2e48179fca4c4bb3aa1f258da73fb7bf" target="_blank" rel="noopener">Watch demo ↗</a><a class="btn red" href="https://app.lemlist.com/share/sequence/cam_jrw6G3qGyB27bQKWf/seq_TAECFzemKZpqaBZZt" target="_blank" rel="noopener">Lemlist ↗</a></div>
+            <div class="project-visual"><img data-eubrics-image alt="Sanitized Eubrics outbound workflow"></div>
+            <div class="tiny-links"><a href="https://app.clay.com/shared-table/share_0tkp9hrentcGe92pjSX" target="_blank" rel="noopener">Clay companies ↗</a><a href="https://app.clay.com/shared-table/share_0tkp9egwzGGMP8sr5Mw" target="_blank" rel="noopener">Clay personas ↗</a></div>
+          </article>
+        </div>
+      </section>
+      <section class="work-screen">
+        <div class="work-heading"><p class="eyebrow">Selected work</p><h2>Operating, building, testing.</h2></div>
+        <div class="work-pair">
+          <article class="project project-leados">
+            <div class="project-meta"><span>Active V1 build</span><span>03</span></div>
+            <h3 data-write>LeadOS</h3>
+            <p>A table-first GTM operating layer for qualification, reasoning, review, and execution state.</p>
+            <div class="project-actions"><a class="btn cyan" href="https://github.com/arsh44n/LeadOS" target="_blank" rel="noopener">GitHub ↗</a><a class="btn red" href="#system">System ↓</a></div>
+            <div class="project-visual"><div class="leados-ui"><i></i><div class="leados-main"><span></span><span></span><span></span></div></div></div>
+          </article>
+          <article class="project project-techie">
+            <div class="project-meta"><span>Strategy assignment</span><span>04</span></div>
+            <h3 data-write>TechieButler × Ramp</h3>
+            <p>Account-specific outbound strategy built around buying context, problem framing, and a reason to reach out.</p>
+            <div class="project-actions"><button class="btn cyan" type="button" data-strategy>View strategy</button><a class="btn red" href="#contact" data-talk-secondary>Talk GTM ↗</a></div>
+            <div class="strategy-note" data-strategy-note>Target: Ramp · Buyer: EVP Engineering · Thesis: lead with engineering-capacity pressure and a reasoned, account-specific message.</div>
+            <div class="project-visual"><div class="tb-lines"><i></i><i></i><i></i><i></i></div></div>
+          </article>
+        </div>
+      </section>
     </div>
   </div>
 </section>
-<section class="flow-cont" aria-label="Flow continuation"><div class="flow-inner"><div class="flow-copy"><p class="eyebrow">Flow continuation</p><h2 data-auto-words>Signal → account → person → action.</h2></div><div class="chain" data-chain><div class="node" data-step>Signal</div><div class="link" data-link></div><div class="node" data-step>Account</div><div class="link" data-link></div><div class="node" data-step>Person</div><div class="link" data-link></div><div class="node" data-step>Action</div></div></div></section>
-<section class="stack" id="system"><div class="stack-inner"><h2 data-auto-words>Tools are replaceable. Jobs are not.</h2><div class="tools"><article class="tool"><span class="tool-index">01</span><h3>Research & data</h3><ul><li>Sales Navigator</li><li>Apollo</li><li>Clay</li></ul></article><article class="tool"><span class="tool-index">02</span><h3>Reasoning & systems</h3><ul><li>LLMs</li><li>Custom logic</li><li>n8n</li><li>Make</li><li>Supabase</li></ul></article><article class="tool"><span class="tool-index">03</span><h3>Activation</h3><ul><li>Lemlist</li><li>Instantly</li><li>LinkedIn</li></ul></article></div></div></section>
-<section class="closing-shell" id="about" data-closing-shell><div class="closing-sticky"><div class="closing-track" data-closing-track><section class="about-panel"><div class="about-inner"><p class="eyebrow">About</p><h2 data-auto-words>I sit between GTM strategy and technical execution.</h2><p data-auto-words>I have operated outbound manually, seen where the motion breaks, and now build systems around those failure points—qualification, research, routing, personalization, execution state, and feedback.</p><p data-auto-words>I am most useful where a team needs someone who can question the motion, build the workflow, and still understand the commercial reason behind it.</p></div></section><section class="final-panel" id="contact"><div class="final-inner"><p class="eyebrow">Open to GTM roles</p><h2>If the motion is <span class="redword">messy</span>, that is usually where I want to <span class="cyanword">look.</span></h2><p>GTM Engineering · Revenue Systems · AI-native outbound</p><div class="final-actions"><a class="btn cyan" href="#work" data-work-jump>View selected work ↗</a><a class="btn red" href="#top" data-top>Back to top ↑</a></div></div><footer class="footer"><span>Arshaan Khan · GTM Engineer</span><span>Signals → Systems → Conversations</span></footer></section></div></div></section>
+
+<section class="stack" id="system">
+  <div class="stack-inner">
+    <p class="eyebrow stack-label">Operating stack</p>
+    <h2 class="stack-thesis" data-write><span class="tools-phrase">Tools are replaceable.</span> <span class="jobs-phrase">Jobs are not.</span></h2>
+    <div class="tools">
+      <article class="tool"><span class="tool-index">01</span><h3>Research & data</h3><p>Find the signal. Verify the context.</p><ul><li>Sales Navigator</li><li>Apollo</li><li>Clay</li></ul></article>
+      <article class="tool"><span class="tool-index">02</span><h3>Reasoning & systems</h3><p>Encode the decision. Keep it inspectable.</p><ul><li>LLMs</li><li>Custom logic</li><li>n8n</li><li>Make</li><li>Supabase</li></ul></article>
+      <article class="tool"><span class="tool-index">03</span><h3>Activation</h3><p>Put the decision into motion.</p><ul><li>Lemlist</li><li>Instantly</li><li>LinkedIn</li></ul></article>
+    </div>
+  </div>
+</section>
+
+<section class="closing-shell" id="about" data-closing-shell>
+  <div class="closing-sticky">
+    <div class="closing-track" data-closing-track>
+      <section class="about-panel">
+        <div class="about-inner">
+          <p class="eyebrow">About</p>
+          <h2 class="about-title" data-write><span>I work where </span><span class="about-red">GTM strategy</span><br><span>becomes a </span><span class="about-cyan">system.</span></h2>
+          <p class="about-mantra" data-write>Run the motion. <strong>Find the break.</strong> Build the workflow.</p>
+          <p class="about-meta" data-write>Qualification · Research · Routing · Personalization · Execution · Feedback</p>
+        </div>
+      </section>
+      <section class="final-panel" id="contact">
+        <div class="final-inner"><p class="eyebrow">Open to GTM roles</p><h2>If the motion is <span class="redword">messy</span>, that is usually where I want to <span class="cyanword">look.</span></h2><p>GTM Engineering · Revenue Systems · AI-native outbound</p><div class="final-actions"><a class="btn cyan" href="#work" data-work-jump>View selected work ↗</a><a class="btn red" href="#top" data-top>Back to top ↑</a></div></div>
+        <footer class="footer"><span>Arshaan Khan · GTM Engineer</span><span>Signals → Systems → Conversations</span></footer>
+      </section>
+    </div>
+  </div>
+</section>
 </main>
-<script src="final.js?v=final2"></script>
-<script src="polish.js?v=2"></script>
-</body></html>
+<div class="proof-modal" data-proof-modal aria-hidden="true"><button class="proof-close" type="button" data-proof-close aria-label="Close proof">×</button><img data-proof-modal-image alt="Expanded evidence screenshot"><div class="proof-modal-caption" data-proof-modal-caption></div></div>
+<script src="final.js?v=4"></script>
+</body>
+</html>
