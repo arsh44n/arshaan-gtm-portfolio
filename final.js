@@ -3,7 +3,7 @@ const q=(s,c=document)=>c.querySelector(s),qa=(s,c=document)=>[...c.querySelecto
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* Theme */
-const theme=q('[data-theme]'),light=q('[data-light]'),dark=q('[data-dark]');
+const theme=q('button[data-theme]'),light=q('[data-light]'),dark=q('[data-dark]');
 function paintTheme(){const d=document.documentElement.dataset.theme==='dark';light?.classList.toggle('is-active',!d);dark?.classList.toggle('is-active',d);try{localStorage.setItem('ak-theme',d?'dark':'light')}catch(e){}}
 paintTheme();theme?.addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';paintTheme()});
 
