@@ -1,0 +1,117 @@
+/* Final production polish: tighter pacing, cleaner reveals, stronger About composition. */
+
+/* Operating belief: no ghosted/blurred text before the reveal starts. */
+.belief-auto .belief-word{
+  opacity:0!important;
+  color:transparent!important;
+  filter:none!important;
+  transform:translateY(10px)!important;
+  transition:opacity .22s ease,transform .28s cubic-bezier(.2,.8,.2,1)!important;
+}
+.belief-auto .belief-word.polish-on{
+  opacity:1!important;
+  color:var(--text)!important;
+  transform:translateY(0)!important;
+}
+.belief-auto .belief-word.accent.polish-on{
+  color:transparent!important;
+  background:linear-gradient(110deg,#780000,#c1121f,#669bbc)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+}
+html[data-theme="dark"] .belief-auto .belief-word.accent.polish-on{
+  background:linear-gradient(110deg,#c1121f,#d90429,#3dd5f3)!important;
+  -webkit-background-clip:text!important;
+  background-clip:text!important;
+  color:transparent!important;
+}
+
+/* Horizontal chapter should move with less dead scroll. */
+@media (min-width:1051px){
+  .belief-work-shell{height:305svh!important}
+}
+
+/* Flow continuation: one compact scene, then hand off immediately to the stack. */
+@media (min-width:1051px){
+  .flow-cont{
+    min-height:72svh!important;
+    padding:94px 32px 24px!important;
+    align-items:center!important;
+  }
+  .flow-inner{
+    gap:24px!important;
+  }
+  .flow-copy .eyebrow{margin-bottom:14px!important}
+  .flow-copy h2{
+    font-size:clamp(46px,4.5vw,70px)!important;
+    line-height:.95!important;
+  }
+  .chain{width:min(920px,100%)!important}
+  .node{height:94px!important;border-radius:20px!important}
+  .stack{
+    min-height:auto!important;
+    padding:64px 32px 74px!important;
+  }
+  .stack h2{
+    margin-bottom:34px!important;
+    font-size:clamp(44px,4.3vw,66px)!important;
+    white-space:nowrap!important;
+  }
+  .tool{min-height:286px!important}
+  .closing-shell{height:188svh!important}
+}
+
+/* About: editorial rather than oversized placeholder copy. */
+.about-panel{
+  padding-top:96px!important;
+  padding-bottom:54px!important;
+}
+.about-inner{
+  width:min(1120px,calc(100vw - 64px))!important;
+  margin:auto!important;
+  text-align:center!important;
+}
+.about-inner>.eyebrow{
+  margin-bottom:30px!important;
+}
+.about-inner h2{
+  max-width:1000px!important;
+  margin:0 auto 26px!important;
+  font-size:clamp(48px,4.9vw,76px)!important;
+  line-height:.98!important;
+  letter-spacing:-.058em!important;
+}
+.about-inner p{
+  max-width:860px!important;
+  margin:0 auto 14px!important;
+  font-size:15px!important;
+  line-height:1.62!important;
+}
+
+/* Production text reveal is cleaner without the heavy blur. */
+.aw{
+  filter:none!important;
+  transform:translateY(.38em)!important;
+  transition:opacity .38s ease,transform .44s cubic-bezier(.2,.8,.2,1)!important;
+  transition-delay:calc(var(--i)*28ms)!important;
+}
+.auto-on .aw{transform:translateY(0)!important}
+
+/* Evidence should remain legible but never dominate the viewport. */
+.proof-wrap img{
+  max-height:100%!important;
+  width:auto!important;
+  object-fit:contain!important;
+}
+
+@media (max-width:1050px){
+  .belief-auto .belief-word{opacity:1!important;color:var(--text)!important;transform:none!important}
+  .flow-cont{padding-top:88px!important;padding-bottom:58px!important}
+  .stack{padding-top:64px!important}
+  .about-inner{width:min(100%,900px)!important}
+}
+
+@media (max-width:680px){
+  .about-inner h2{font-size:44px!important}
+  .about-inner p{font-size:14px!important}
+}
