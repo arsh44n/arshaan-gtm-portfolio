@@ -38,18 +38,25 @@ jobs:
             ./ _site/
 
           # Reconstruct the exact uploaded resume into a normal binary PDF.
+          # Each source part is independently base64 encoded, so decode each
+          # part first and then concatenate the resulting bytes.
           python3 - <<'PY'
           from pathlib import Path
           import base64, hashlib
 
           parts = sorted(Path('assets/resume').glob('part-*.b64.txt'))
           assert len(parts) == 7, f'Expected 7 resume parts, found {len(parts)}'
-          payload = ''.join(p.read_text(encoding='utf-8') for p in parts)
-          payload = ''.join(payload.split())
-          pdf = base64.b64decode(payload, validate=True)
+
+          decoded = []
+          for part in parts:
+              payload = ''.join(part.read_text(encoding='utf-8').split())
+              decoded.append(base64.b64decode(payload, validate=True))
+
+          pdf = b''.join(decoded)
           assert len(pdf) == 95357, f'Unexpected PDF size: {len(pdf)}'
           digest = hashlib.sha256(pdf).hexdigest()
           assert digest == 'fffd5a632203a19aef23e1c4877c759931f1b2267f792c52165a6c201ebfbd8b', digest
+
           out = Path('_site/assets/Arshaan-Khan-GTM-Resume.pdf')
           out.write_bytes(pdf)
           print(f'Resume verified: {len(pdf)} bytes, sha256={digest}')
