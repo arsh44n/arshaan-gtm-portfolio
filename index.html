@@ -14,18 +14,25 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232b2d42'/%3E%3Ctext x='32' y='42' text-anchor='middle' font-family='Arial' font-weight='700' font-size='26' fill='%23edf2f4'%3EAK%3C/text%3E%3C/svg%3E">
 <script>try{document.documentElement.dataset.theme=localStorage.getItem('ak-theme')==='dark'?'dark':'light'}catch(e){}</script>
-<link rel="stylesheet" href="final.css?v=5">
+<link rel="stylesheet" href="final.css?v=6">
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
 <header class="nav" id="top">
   <a class="brand" href="#top">AK</a>
-  <nav aria-label="Primary"><a href="#proof">Flow</a><a href="#work" data-work-jump>Work</a><a href="#system">System</a><a href="#about">About</a></nav>
+  <nav aria-label="Primary">
+    <a href="#proof">Flow</a>
+    <a href="#work" data-work-jump>Work</a>
+    <a href="#system">System</a>
+    <a href="#about">About</a>
+    <a href="#" data-resume-download>Résumé ↓</a>
+  </nav>
   <div class="nav-actions">
     <button class="theme" type="button" data-theme aria-label="Toggle color theme"><span data-light>Light</span><span data-dark>Dark</span></button>
     <a class="cta" href="#contact" data-talk>Talk GTM</a>
   </div>
 </header>
+
 <main>
 <section class="hero">
   <div class="hero-orb" aria-hidden="true"></div>
@@ -90,7 +97,10 @@
             <div class="project-meta"><span>Operating experience</span><span>01</span></div>
             <h3 data-write>JobReady.co</h3>
             <p>Signal-led outbound across LinkedIn and email, built around tighter targeting rather than maximum send volume.</p>
-            <div class="project-actions"><a class="btn cyan" href="https://salesforce.jobready.co/" target="_blank" rel="noopener">Company ↗</a><a class="btn red" href="#proof">Lead journey ↑</a></div>
+            <div class="project-actions">
+              <a class="btn cyan" href="https://salesforce.jobready.co/" target="_blank" rel="noopener">Company ↗</a>
+              <a class="btn red" href="#proof">Lead journey ↑</a>
+            </div>
             <div class="jobready-proof" aria-label="JobReady outbound results">
               <div class="jr-volume"><strong>1,200+</strong><span>outbound touches</span><small>across 3 weeks</small></div>
               <div class="jr-funnel" aria-label="Normalized funnel per 100 unique prospects">
@@ -108,9 +118,14 @@
             <div class="project-meta"><span>Featured case study</span><span>02</span></div>
             <h3 data-write>Eubrics · US Insurance</h3>
             <p>End-to-end outbound prototype: qualification → research → sequencing → channel logic → reporting.</p>
-            <div class="project-actions"><a class="btn cyan" href="https://www.loom.com/share/2e48179fca4c4bb3aa1f258da73fb7bf" target="_blank" rel="noopener">Watch demo ↗</a><a class="btn red" href="https://app.lemlist.com/share/sequence/cam_jrw6G3qGyB27bQKWf/seq_TAECFzemKZpqaBZZt" target="_blank" rel="noopener">Lemlist ↗</a></div>
+            <div class="project-actions" aria-label="Eubrics proof links">
+              <a class="btn cyan" href="https://www.loom.com/share/2e48179fca4c4bb3aa1f258da73fb7bf" target="_blank" rel="noopener">Loom walkthrough ↗</a>
+              <a class="btn red" href="https://app.lemlist.com/share/sequence/cam_jrw6G3qGyB27bQKWf/seq_TAECFzemKZpqaBZZt" target="_blank" rel="noopener">Lemlist sequence ↗</a>
+              <a class="btn cyan" href="https://app.clay.com/shared-table/share_0tkp9hrentcGe92pjSX" target="_blank" rel="noopener">Clay companies ↗</a>
+              <a class="btn red" href="https://app.clay.com/shared-table/share_0tkp9egwzGGMP8sr5Mw" target="_blank" rel="noopener">Clay personas ↗</a>
+            </div>
             <div class="project-visual"><img data-eubrics-image alt="Eubrics outbound workflow evidence"></div>
-            <div class="tiny-links"><a href="https://app.clay.com/shared-table/share_0tkp9hrentcGe92pjSX" target="_blank" rel="noopener">Clay companies ↗</a><a href="https://app.clay.com/shared-table/share_0tkp9egwzGGMP8sr5Mw" target="_blank" rel="noopener">Clay personas ↗</a></div>
+            <div class="tiny-links"><span>All stored public build links are exposed above.</span></div>
           </article>
         </div>
       </section>
@@ -122,15 +137,24 @@
             <div class="project-meta"><span>Active V1 build</span><span>03</span></div>
             <h3 data-write>LeadOS</h3>
             <p>A table-first GTM operating layer for qualification, reasoning, review, and execution state.</p>
-            <div class="project-actions"><a class="btn cyan" href="https://github.com/arsh44n/LeadOS" target="_blank" rel="noopener">GitHub ↗</a><a class="btn red" href="#system">System ↓</a></div>
+            <div class="project-actions">
+              <a class="btn cyan" href="https://github.com/arsh44n/LeadOS" target="_blank" rel="noopener">GitHub ↗</a>
+              <a class="btn red" href="#system">System ↓</a>
+            </div>
             <div class="project-visual"><div class="leados-ui"><i></i><div class="leados-main"><span></span><span></span><span></span></div></div></div>
           </article>
+
           <article class="project project-techie">
             <div class="project-meta"><span>Strategy assignment</span><span>04</span></div>
             <h3 data-write>TechieButler × Ramp</h3>
             <p>Account-specific outbound strategy built around buying context, problem framing, and a reason to reach out.</p>
-            <div class="project-actions"><button class="btn cyan" type="button" data-strategy>View strategy</button><a class="btn red" href="#contact" data-talk-secondary>Talk GTM ↗</a></div>
-            <div class="strategy-note" data-strategy-note>Target: Ramp · Buyer: EVP Engineering · Thesis: lead with engineering-capacity pressure and a reasoned, account-specific message.</div>
+            <div class="project-actions">
+              <button class="btn cyan" type="button" data-strategy>View assignment evidence</button>
+              <a class="btn red" href="#contact" data-talk-secondary>Talk GTM ↗</a>
+            </div>
+            <div class="strategy-note" data-strategy-note>
+              <strong>Assignment evidence:</strong> account research · EVP Engineering persona decision · cold email · messaging rationale · Loom narrative. No public share URL for this private assignment is stored, so nothing is being fabricated here.
+            </div>
             <div class="project-visual"><div class="tb-lines"><i></i><i></i><i></i><i></i></div></div>
           </article>
         </div>
@@ -179,11 +203,17 @@
             <h2 data-write>If the motion is <span class="redword">messy</span>, that is usually where I want to <span class="cyanword">look.</span></h2>
             <p class="final-sub">GTM Engineering · Revenue Systems · AI-native outbound</p>
             <div class="final-actions">
-              <a class="btn cyan contact-primary" href="mailto:arsh44n.me@gmail.com">Email me ↗</a>
-              <a class="btn red" href="https://www.linkedin.com/in/arsh44n" target="_blank" rel="noopener">LinkedIn ↗</a>
+              <a class="btn cyan contact-primary" href="mailto:arsh44n.me@gmail.com?subject=GTM%20opportunity" data-email-me>Email me ↗</a>
+              <button class="btn contact-ghost" type="button" data-copy-email>Copy email</button>
+              <a class="btn red" href="https://www.linkedin.com/in/arsh44n/" target="_blank" rel="noopener">LinkedIn ↗</a>
               <a class="btn contact-ghost" href="https://wa.me/918837866368" target="_blank" rel="noopener">WhatsApp ↗</a>
+              <button class="btn contact-ghost" type="button" data-resume-download>Download résumé ↓</button>
             </div>
-            <div class="contact-meta"><a href="mailto:arsh44n.me@gmail.com">arsh44n.me@gmail.com</a><span>·</span><a href="tel:+918837866368">+91 88378 66368</a><span>·</span><a href="#work" data-work-jump>Selected work ↑</a></div>
+            <div class="contact-meta">
+              <a href="mailto:arsh44n.me@gmail.com?subject=GTM%20opportunity" data-email-me>arsh44n.me@gmail.com</a><span>·</span>
+              <a href="tel:+918837866368">+91 88378 66368</a><span>·</span>
+              <a href="#work" data-work-jump>Selected work ↑</a>
+            </div>
           </div>
         </div>
         <footer class="footer"><span>Arshaan Khan · GTM Engineer</span><span>Signals → Systems → Conversations</span></footer>
@@ -192,7 +222,12 @@
   </div>
 </section>
 </main>
-<div class="proof-modal" data-proof-modal aria-hidden="true"><button class="proof-close" type="button" data-proof-close aria-label="Close proof">×</button><img data-proof-modal-image alt="Expanded evidence screenshot"><div class="proof-modal-caption" data-proof-modal-caption></div></div>
-<script src="final.js?v=5"></script>
+
+<div class="proof-modal" data-proof-modal aria-hidden="true">
+  <button class="proof-close" type="button" data-proof-close aria-label="Close proof">×</button>
+  <img data-proof-modal-image alt="Expanded evidence screenshot">
+  <div class="proof-modal-caption" data-proof-modal-caption></div>
+</div>
+<script src="final.js?v=6"></script>
 </body>
 </html>
