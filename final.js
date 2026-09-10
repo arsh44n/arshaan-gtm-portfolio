@@ -1,13 +1,14 @@
 (()=>{
 const q=(s,c=document)=>c.querySelector(s),qa=(s,c=document)=>[...c.querySelectorAll(s)],clamp=(v,a=0,b=1)=>Math.max(a,Math.min(b,v)),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const imgs={detect:'',research:'',systemize:'',activate:'',learn:''};
-const evidenceFiles={detect:'evidence/detect.b64.txt',research:'evidence/research.b64.txt',systemize:'evidence/systemize.b64.txt',activate:'evidence/activate.b64.txt',learn:'evidence/learn.b64.txt'};
+const ASSET_ROOT='https://raw.githubusercontent.com/arsh44n/arshaan_portfolio/main/gtm-portfolio/evidence/';
+const evidenceFiles={detect:ASSET_ROOT+'detect.b64.txt',research:ASSET_ROOT+'research.b64.txt',systemize:ASSET_ROOT+'systemize.b64.txt',activate:ASSET_ROOT+'activate.b64.txt',learn:ASSET_ROOT+'learn.b64.txt'};
 async function loadEvidence(){
   await Promise.all(Object.entries(evidenceFiles).map(async([key,path])=>{
     try{
-      const res=await fetch(new URL(path,document.baseURI),{cache:'force-cache'});
+      const res=await fetch(path,{cache:'force-cache'});
       if(!res.ok) throw new Error(`evidence ${key}: ${res.status}`);
-      const b64=(await res.text()).trim();
+      const b64=(await res.text()).replace(/\s+/g,'');
       if(!b64) throw new Error(`evidence ${key}: empty`);
       imgs[key]=`data:image/webp;base64,${b64}`;
       const idx=['detect','research','systemize','activate','learn'].indexOf(key);
