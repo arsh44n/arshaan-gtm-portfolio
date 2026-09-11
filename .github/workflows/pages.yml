@@ -41,7 +41,7 @@ jobs:
           # local resources project-relative rather than domain-root-relative.
           sed -i "s#'/evidence/systemize.b64.txt#'evidence/systemize.b64.txt#g" _site/final.js
           sed -i 's/Résumé/Resume/g' _site/index.html
-          sed -i 's#</body>#<script src="pages-runtime.js?v=2"></script>\n</body>#' _site/index.html
+          sed -i 's#</body>#<script src="pages-runtime.js?v=3"></script>\n</body>#' _site/index.html
 
           # Resume source chunks are not public site assets. Resume delivery is
           # handled separately so a PDF issue can never block the whole site.
