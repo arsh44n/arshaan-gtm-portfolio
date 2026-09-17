@@ -1,0 +1,40 @@
+/* GitHub Pages evidence-slide fit override.
+   Keep every finalized 16:9 proof slide fully visible inside the viewport.
+   The original PNG is never cropped or resampled by CSS. */
+
+.journey-v2-card{
+  padding:10px 12px 12px !important;
+}
+
+.journey-v2-proof{
+  width:min(100%,calc((100svh - 285px) * 16 / 9)) !important;
+  height:auto !important;
+  aspect-ratio:16 / 9 !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  justify-self:center !important;
+  align-self:center !important;
+  overflow:visible !important;
+}
+
+.journey-v2-proof img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+  object-fit:contain !important;
+  object-position:center center !important;
+}
+
+@media(max-width:1050px){
+  .journey-v2-proof{
+    width:min(100%,calc((100svh - 250px) * 16 / 9)) !important;
+  }
+}
+
+@media(max-width:680px){
+  .journey-v2-proof{
+    width:min(100%,calc((100svh - 220px) * 16 / 9)) !important;
+  }
+}
